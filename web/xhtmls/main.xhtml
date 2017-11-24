@@ -4,8 +4,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Main Page</title>
+        <h:outputStylesheet library="css" name="main.css"/>
+    </h:head>
+    <h:body>
+
+        <div class="header">
+            <h:outputLabel value="Melnic Andrew , Semenov Pavel IAD Lab 3 V:1030"/>
+        </div>
+
+        <div class="flex-continer">
+            <div class="left-bar">
+                <h:form>
+                    <h:outputLabel>Enter X:</h:outputLabel><br/>
+                    <p:spinner id="spin" stepFactor="0.1" required="true" min="-5" max="5" value="#{point.x}"/><br/>
+                    <h:outputLabel>Enter Y:</h:outputLabel><br/>
+                    <h:inputText/><br/>
+                    <h:outputLabel>Enter R:</h:outputLabel><br/>
+                    <h:commandLink>1</h:commandLink>
+                    <h:commandLink>2</h:commandLink>
+                    <h:commandLink>3</h:commandLink>
+                    <h:commandLink>4</h:commandLink>
+                    <h:commandLink>5</h:commandLink><br/>
+                    <h:outputLink value="index.xhtml">Go to the Index//FIX BACKPAGE</h:outputLink>
+                </h:form>
+            </div>
+            <div class="right-bar">
+                Graph
+            </div>
+        </div>
+
+        <div class="footer">
+            Made by mistake.
+        </div>
+
+    </h:body>
 </html>

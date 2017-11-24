@@ -1,0 +1,53 @@
+@font-face{
+    font-family: "gloria";
+    src: url("#{resource['fonts:GloriaHallelujah.ttf']}") format("truetype");
+}
+
+html , body{
+    background-color: white;
+    font-family: "gloria";
+    color: white;
+    margin: 0;
+    height: 100%;
+}
+
+
+.header{
+    height: 15%;
+    width: auto;
+    background-color: darkslategrey;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    border: 1px solid black;
+}
+.flex-continer{
+    display: flex;
+    height:70%;
+    flex-direction: row;
+}
+
+.left-bar{
+    flex-basis: 20%;
+    border: 1px solid blue;
+    text-align: right;
+    color: yellow;
+    font-size: 2em;
+
+}
+
+.right-bar{
+    flex-basis: 50%;
+    border: 1px solid blue;
+    color: yellow;
+}
+
+.footer{
+    height: 15%;
+    width: auto;
+    background-color: darkslategrey;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    border: 1px solid black;
+}

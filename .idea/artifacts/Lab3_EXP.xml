@@ -8,7 +8,6 @@
           <element id="jpa-descriptors" facet="Lab3/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="JPA 1.0-JPA 1.0" />
           <element id="library" level="project" name="Mojarra-2.2.1" />
         </element>
       </element>

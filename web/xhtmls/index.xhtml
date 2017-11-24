@@ -8,11 +8,55 @@
 
     <h:head>
         <title>
-            MainPage
+            IndexPage
         </title>
         <h:outputStylesheet library="css" name="index.css"/>
     </h:head>
+
     <h:body>
+
+        <div class="header">
+            <h:outputLabel value="Melnic Andrew , Semenov Pavel IAD Lab 3 V:1030"/>
+        </div>
+
+        <div class="main">
+
+            <div class="row" id="row1">
+                <div class="box" id="box1">
+                    <h:graphicImage library="imgs" name="tenor.gif"/>
+                </div>
+                <div class="box" id="box2">
+                    <div id="clock">
+                        <script type="text/javascript">
+                            dateContainer = document.getElementById('clock');
+                            setTime();
+                            function setTime() {
+                                var dt = new Date().toLocaleString();
+                                dateContainer.innerHTML = dt;
+                                setTimeout('setTime()', 8000);
+                            }
+                        </script>
+                    </div>
+                    <div class="link">
+                        <!--<h:commandLink action="main">Go Main</h:commandLink>-->
+                        <!--FIX PAGE NAVIGATION-->
+                        <h:outputLink value="xhtmls/main.xhtml">Go to the Main Page</h:outputLink>
+                    </div>
+                </div>
+                <div class="box" id="box3">
+                    <h:graphicImage library="imgs" name="tenor.gif"/>
+                </div>
+                <div class="box" id="box4">
+                    <h:graphicImage library="imgs" name="tenor.gif"/>
+                </div>
+                <div class="box" id="box5">
+                    <h:graphicImage library="imgs" name="tenor.gif"/>
+                </div>
+                <div class="box" id="box6">
+                    <h:graphicImage library="imgs" name="tenor.gif"/>
+                </div>
+            </div>
+        </div>
 
     </h:body>
 

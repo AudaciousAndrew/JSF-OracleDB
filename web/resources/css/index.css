@@ -1,3 +1,64 @@
-*{
+html , body{
     background-color: black;
+    font-family: "gloria";
+    color: white;
+    margin: 0;
+    height: 100%;
 }
+
+@font-face{
+    font-family: "gloria";
+    src: url("#{resource['fonts:GloriaHallelujah.ttf']}") format("truetype");
+}
+
+.header{
+    width: auto;
+    background-color: darkslategrey;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row .box {
+    margin: 20px 20px 0 20px;
+    display: flex;
+    flex-basis: 30%;
+    justify-content: center;
+}
+
+.box img{
+    height: 85%;
+    width: 85%;
+}
+
+#clock{
+    font-size: 2em;
+}
+
+#box2{
+    flex-direction: column;
+    text-align: center;
+}
+
+.link {
+    font-size: 2em;
+    border: 1px solid white;
+    background-color: dimgray;
+    border-radius: 15px;
+}
+
+.link a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
