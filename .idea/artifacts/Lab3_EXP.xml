@@ -1,13 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="Lab3">
-    <output-path>$PROJECT_DIR$/out/artifacts/Lab3</output-path>
-    <root id="archive" name="Lab3.war">
+  <artifact type="exploded-war" name="Lab3_EXP">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lab3_EXP</output-path>
+    <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Lab3" />
           <element id="jpa-descriptors" facet="Lab3/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="JPA 1.0-JPA 1.0" />
           <element id="library" level="project" name="Mojarra-2.2.1" />
         </element>
       </element>
