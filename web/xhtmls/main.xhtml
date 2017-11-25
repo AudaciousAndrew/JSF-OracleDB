@@ -86,6 +86,7 @@
                                 </h:commandLink>
                             </td>
                         </tr>
+                        <h:inputHidden id="HiddenR2" value="#{point.r}"/>
                     </table>
 
 
@@ -131,7 +132,12 @@
             <h:inputHidden id="HiddenX" value="#{point.x}"/>
             <h:inputHidden id="HiddenY" value="#{point.y}"/>
             <h:inputHidden id="HiddenR" value="#{point.r}"/>
-            <h:commandButton style="display: none" id="HiddenSubmit" value="Submit" action="#{point.addNewPoint}"/>
+            <h:commandButton style="display: none"
+                             id="HiddenSubmit"
+                             value="Submit"
+                             action="#{point.addNewPoint}">
+                <f:ajax event="click" listener="#{point.addNewPoint}"/>
+            </h:commandButton>
         </h:form>
 
 

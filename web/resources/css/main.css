@@ -37,9 +37,11 @@ html , body{
 .midle-bar{
     color: black;
     flex: 2;
+
 }
 
 .canvasff {
+    border: 1px solid dimgray;
     width: 450px;
     height: 450px;
 }

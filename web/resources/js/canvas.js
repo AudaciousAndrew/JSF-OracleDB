@@ -104,25 +104,44 @@ function clicCanvas(event) {
     var br = canvas.getBoundingClientRect();
     var x = event.clientX-br.left;
     var y = event.clientY-br.top;
-    addPoint(x, y, R);
-    drawPoint(c , x , y , false);
+    addPoint(x, y);
+    drawPoint(c , x , y , inArea(x,y));
 }
 
-function addPoint(x, y, r) {
+function addPoint(x, y) {
     var width = canvas.width;
     var height = canvas.height;
     var wDiv = canvas.width / 12;
     var hDiv = canvas.height / 12;
     if(x <= width/2) x = -(width/2 - x) / wDiv;
     else x = (x - width/2) / wDiv;
-
     if(y <= height/2) y = (height/2 - y)/ hDiv;
     else y = -(y - height/2) / hDiv;
-    alert("x="+x+" y="+y+" R="+R);
+    alert("x="+x+" y="+y+" r="+R);
     document.getElementById("HiddenForm:HiddenX").value=x;
     document.getElementById("HiddenForm:HiddenY").value=y;
     document.getElementById("HiddenForm:HiddenR").value=R;
     document.getElementById("HiddenForm:HiddenSubmit").click();
+}
+
+function inArea(x,y){
+    var width = canvas.width;
+    var height = canvas.height;
+    var wDiv = canvas.width / 12;
+    var hDiv = canvas.height / 12;
+    if(x <= width/2) x = -(width/2 - x) / wDiv;
+    else x = (x - width/2) / wDiv;
+    if(y <= height/2) y = (height/2 - y)/ hDiv;
+    else y = -(y - height/2) / hDiv;
+    if (
+        ( x<=0 && x>=-R && y>=0 && y<=R/2 ) ||
+        ( x<=0 && y<=0 && ((x*x + y*y) <= (R*R))  ) ||
+        ( x >= 0 && x <= R/2 && y <= 0 && y >= -R/2 && y>=(x - R/2) )
+    ){
+        return 'true';
+    }else{
+        return 'false';
+    }
 }
 
 // function drawFromTable(){
