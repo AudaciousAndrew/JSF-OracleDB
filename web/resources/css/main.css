@@ -21,7 +21,7 @@ html , body{
     text-align: center;
     border: 1px solid black;
 }
-.flex-continer{
+.flex-container{
     display: flex;
     height:70%;
     flex-direction: row;

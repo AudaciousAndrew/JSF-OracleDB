@@ -10,6 +10,7 @@
         <title>Main Page</title>
         <h:outputStylesheet library="css" name="main.css"/>
         <h:outputScript library="js" name="validation.js"/>
+
     </h:head>
     <h:body>
 
@@ -17,12 +18,16 @@
             <h:outputLabel value="Melnic Andrew , Semenov Pavel IAD Lab 3 V:1030"/>
         </div>
 
-        <div class="flex-continer">
+        <div class="flex-container">
+
             <div class="left-bar">
+
                 <h:form id="MainForm">
+
                     <div id="inptLable">
                         <h:outputLabel>Input</h:outputLabel><br/>
                     </div>
+
                     <h:outputLabel>Enter X(-5..5):</h:outputLabel>
                     <p:spinner id="spin"
                                stepFactor="0.1"
@@ -31,6 +36,8 @@
                                max="5"
                                size="13"
                                value="#{point.x}"/>
+
+
                     <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
                     <h:inputText id="Yinput"
                                  value="#{point.y}"
@@ -42,7 +49,10 @@
                         <f:validateRequired />
                     </h:inputText>
                     <br/>
-                    <h:outputLabel>Enter R:</h:outputLabel><br/>
+
+
+                    <h:outputLabel>Enter R:</h:outputLabel>
+                    <br/>
                     <table class="linktable">
                         <tr>
                             <td>
@@ -77,11 +87,10 @@
                             </td>
                         </tr>
                     </table>
-                    <h:inputHidden id="hiddenR" value="#{point.r}" required="true"
-                                   requiredMessage="Required R" />
+
 
                     <div class="buttons-container">
-                        <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}" />
+                        <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}"/>
                         <br/>
                         <div class="ccc">
                         <p:commandButton id="indexbtn" value="GoIndex" action="index.xhtml" />
@@ -90,13 +99,16 @@
                    </div>
 
                 </h:form>
+
             </div>
+
 
             <div class="midle-bar">
                 <div class="canvasff">
-                   <canvas></canvas>
+                   <canvas onclick="clicCanvas(event)"></canvas>
                 </div>
             </div>
+
 
             <div class="right-bar">
                 <table>
@@ -110,9 +122,19 @@
             </div>
         </div>
 
+
         <div class="footer">
             Made by mistake.
         </div>
+
+        <h:form id="HiddenForm">
+            <h:inputHidden id="HiddenX" value="#{point.x}"/>
+            <h:inputHidden id="HiddenY" value="#{point.y}"/>
+            <h:inputHidden id="HiddenR" value="#{point.r}"/>
+            <p:commandButton style="display: none" id="HiddenSubmit" value="Submit" action="#{point.addNewPoint}"/>
+        </h:form>
+
+
         <h:outputScript library="js" name="canvas.js"/>
     </h:body>
 </html>

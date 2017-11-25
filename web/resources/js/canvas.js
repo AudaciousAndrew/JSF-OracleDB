@@ -77,3 +77,74 @@ function reDraw() {
     drawAxes(c);
     fillAxes();
 }
+
+function mainSubmit(){
+     var x = document.getElementById("MainForm:spin").value;
+     alert(x);
+    //alert("1123");
+}
+
+function drawPoint(context, x, y , inArea){
+
+    context.beginPath();
+    if(inArea =="true"){
+        context.fillStyle = "Green";
+    } else {
+        context.fillStyle = "Red";
+    }
+    context.arc(x, y, 3, 0*Math.PI, 2*Math.PI);
+    context.fill();
+}
+
+function clicCanvas(event) {
+    if((R == null) || isNaN(R)){
+        alert("Set R");
+        return;
+    }
+    var br = canvas.getBoundingClientRect();
+    var x = event.clientX-br.left;
+    var y = event.clientY-br.top;
+    addPoint(x, y, R);
+    drawPoint(c , x , y , false);
+}
+
+function addPoint(x, y, r) {
+    var width = canvas.width;
+    var height = canvas.height;
+    var wDiv = canvas.width / 12;
+    var hDiv = canvas.height / 12;
+    if(x <= width/2) x = -(width/2 - x) / wDiv;
+    else x = (x - width/2) / wDiv;
+
+    if(y <= height/2) y = (height/2 - y)/ hDiv;
+    else y = -(y - height/2) / hDiv;
+    alert("x="+x+" y="+y+" R="+R);
+    document.getElementById("HiddenForm:HiddenX").value=x;
+    document.getElementById("HiddenForm:HiddenY").value=y;
+    document.getElementById("HiddenForm:HiddenR").value=R;
+    document.getElementById("HiddenForm:HiddenSubmit").click();
+}
+
+// function drawFromTable(){
+//     var oTable = document.getElementById("table11");
+//     var rowLength = oTable.rows.length;
+//     var x, y, r, ent;
+//     var width = canvas.width;
+//     var height = canvas.height;
+//     var wDiv = canvas.width / 10;
+//     var hDiv = canvas.height / 10;
+//     var currRad = parseFloat(document.forms["input"]["R"].value , 10);
+//     for (i = 1; i<=rowLength; i++){
+//         var oCells = oTable.rows.item(i).cells;
+//         x = oCells.item(1).innerHTML;
+//         y = oCells.item(2).innerHTML;
+//         r = oCells.item(3).innerHTML;
+//         ent = oCells.item(4).innerHTML;
+//         if(x <= 0) x = (width/2 + x * wDiv);
+//         else x = (x * wDiv) + width/2;
+//
+//         if(y >= 0) y = (height / 2 - y * hDiv);
+//         else y = height/2 + ((-y) * hDiv);
+//         if(currRad == r)drawPoint(c, x, y, ent);
+//     }
+// }
