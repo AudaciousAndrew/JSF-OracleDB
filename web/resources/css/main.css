@@ -28,18 +28,29 @@ html , body{
 }
 
 .left-bar{
-    flex-basis: 20%;
-    border: 1px solid blue;
-    text-align: right;
-    color: yellow;
-    font-size: 2em;
+    text-align: left;
+    color: black;
+    font-size: 1.5em;
+    flex: 1;
+}
 
+.midle-bar{
+    color: black;
+    flex: 2;
+}
+
+.canvasff {
+    width: 450px;
+    height: 450px;
 }
 
 .right-bar{
-    flex-basis: 50%;
-    border: 1px solid blue;
-    color: yellow;
+    flex: 2;
+    color: black;
+}
+
+.right-bar table{
+    width: 100%;
 }
 
 .footer{
@@ -50,4 +61,38 @@ html , body{
     font-size: 3em;
     text-align: center;
     border: 1px solid black;
+}
+
+#inptLable{
+    text-align: center;
+}
+
+.linktable{
+    width: 100%;
+}
+
+.linktable td {
+    padding-left: 10px;
+}
+
+.linktable td a {
+    text-decoration: none;
+    color: black;
+}
+
+.buttons-container {
+    font-size: 0.8em;
+    width: 100%;
+    padding: 2px;
+}
+
+.buttons-container button{
+    width: 99%;
+}
+
+.ccc {
+    width: 99%;
+}
+.ccc button{
+     width: 100%;
 }

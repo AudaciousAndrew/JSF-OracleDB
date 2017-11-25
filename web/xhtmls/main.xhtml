@@ -9,6 +9,7 @@
     <h:head>
         <title>Main Page</title>
         <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library="js" name="validation.js"/>
     </h:head>
     <h:body>
 
@@ -18,28 +19,100 @@
 
         <div class="flex-continer">
             <div class="left-bar">
-                <h:form>
-                    <h:outputLabel>Enter X:</h:outputLabel><br/>
-                    <p:spinner id="spin" stepFactor="0.1" required="true" min="-5" max="5" value="#{point.x}"/><br/>
-                    <h:outputLabel>Enter Y:</h:outputLabel><br/>
-                    <h:inputText/><br/>
+                <h:form id="MainForm">
+                    <div id="inptLable">
+                        <h:outputLabel>Input</h:outputLabel><br/>
+                    </div>
+                    <h:outputLabel>Enter X(-5..5):</h:outputLabel>
+                    <p:spinner id="spin"
+                               stepFactor="0.1"
+                               required="true"
+                               min="-5"
+                               max="5"
+                               size="13"
+                               value="#{point.x}"/>
+                    <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
+                    <h:inputText id="Yinput"
+                                 value="#{point.y}"
+                                 validatorMessage="Wrong Y"
+                                 converterMessage="Wrong Y"
+                                 requiredMessage="Required Y"
+                                 >
+                        <f:validateDoubleRange maximum="3" minimum="-5"/>
+                        <f:validateRequired />
+                    </h:inputText>
+                    <br/>
                     <h:outputLabel>Enter R:</h:outputLabel><br/>
-                    <h:commandLink>1</h:commandLink>
-                    <h:commandLink>2</h:commandLink>
-                    <h:commandLink>3</h:commandLink>
-                    <h:commandLink>4</h:commandLink>
-                    <h:commandLink>5</h:commandLink><br/>
-                    <h:outputLink value="index.xhtml">Go to the Index//FIX BACKPAGE</h:outputLink>
+                    <table class="linktable">
+                        <tr>
+                            <td>
+                                <h:commandLink id="link1"  onclick='setRAndDraw(1)'>
+                                    <f:ajax execute="@form" render="@form"></f:ajax>
+                                    1
+                                </h:commandLink>
+                            </td>
+                            <td>
+                                <h:commandLink id="link2" onclick='setRAndDraw(2)'>
+                                    <f:ajax execute="@form" render="@form"></f:ajax>
+                                    2
+                                </h:commandLink>
+                            </td>
+                            <td>
+                                <h:commandLink id="link3" onclick="setRAndDraw(3)">
+                                    <f:ajax execute="@form" render="@form"></f:ajax>
+                                    3
+                                </h:commandLink>
+                            </td>
+                            <td>
+                                <h:commandLink id="link4" onclick="setRAndDraw(4)">
+                                    <f:ajax execute="@form" render="@form"></f:ajax>
+                                    4
+                                </h:commandLink>
+                            </td>
+                            <td>
+                                <h:commandLink id="link5" onclick="setRAndDraw(5)">
+                                    <f:ajax execute="@form" render="@form"></f:ajax>
+                                    5
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+                    <h:inputHidden id="hiddenR" value="#{point.r}" required="true"
+                                   requiredMessage="Required R" />
+
+                    <div class="buttons-container">
+                        <p:commandButton value="Submit" update="errMSG" action="index.xhtml" />
+                        <br/>
+                        <div class="ccc">
+                        <p:commandButton id="indexbtn" value="GoIndex" action="index.xhtml" />
+                        </div>
+                        <h:messages id="errMSG" />
+                   </div>
+
                 </h:form>
             </div>
+
+            <div class="midle-bar">
+                <div class="canvasff">
+                   <canvas></canvas>
+                </div>
+            </div>
+
             <div class="right-bar">
-                Graph
+                <table>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Hit</th>
+                    </tr>
+                </table>
             </div>
         </div>
 
         <div class="footer">
             Made by mistake.
         </div>
-
+        <h:outputScript library="js" name="canvas.js"/>
     </h:body>
 </html>
