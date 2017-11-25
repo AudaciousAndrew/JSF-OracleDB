@@ -5,4 +5,22 @@
                                   http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
 
+
+    <navigation-rule>
+        <from-view-id>/xhtmls/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/xhtmls/main.xhtml</to-view-id>
+            <redirect/></navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/xhtmls/main.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/xhtmls/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>
