@@ -17,6 +17,10 @@ import static org.primefaces.component.remotecommand.RemoteCommand.PropertyKeys.
 public class PointDB  {
     private Connection dbConnection;
 
+    public PointDB(){
+        connectDB();
+    }
+
     private void connectDB()
     {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
@@ -28,9 +32,9 @@ public class PointDB  {
         try {
             String sql = "CREATE TABLE IF NOT EXISTS point (\n" +
                     "  id     SERIAL PRIMARY KEY,\n" +
-                    "  x      DOUBLE,\n" +
-                    "  y      DOUBLE,\n" +
-                    "  r      DOUBLE,\n" +
+                    "  x      DOUBLE PRECISION,\n" +
+                    "  y      DOUBLE PRECISION,\n" +
+                    "  r      DOUBLE PRECISION,\n" +
                     "  inArea BOOLEAN\n" +
                     ");\n";
             dbConnection = dataSource.getConnection();
@@ -38,7 +42,7 @@ public class PointDB  {
             statement.execute();
         }
         catch (SQLException e) {
-            // ignore
+            e.printStackTrace();
         }
     }
 

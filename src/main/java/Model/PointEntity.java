@@ -61,10 +61,6 @@ public class PointEntity {
         return inArea;
     }
 
-    public void setInArea(boolean inArea) {
-        this.inArea = inArea;
-    }
-
     public boolean checkArea(){
         if((x < 0 && x >=-r) &&
                 ((y > 0 && y <= r/2) || (y < 0 && y >= -r && (Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2))))) return true;
