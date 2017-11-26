@@ -91,7 +91,7 @@
 
 
                     <div class="buttons-container">
-                        <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}"/>
+                        <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
                         <br/>
                         <div class="ccc">
                         <p:commandButton id="indexbtn" value="GoIndex" action="index.xhtml" />
@@ -132,12 +132,11 @@
             <h:inputHidden id="HiddenX" value="#{point.x}"/>
             <h:inputHidden id="HiddenY" value="#{point.y}"/>
             <h:inputHidden id="HiddenR" value="#{point.r}"/>
-            <h:commandButton style="display: none"
+            <p:commandButton style="display: none"
                              id="HiddenSubmit"
                              value="Submit"
                              action="#{point.addNewPoint}">
-                <f:ajax event="click" listener="#{point.addNewPoint}"/>
-            </h:commandButton>
+            </p:commandButton>
         </h:form>
 
 

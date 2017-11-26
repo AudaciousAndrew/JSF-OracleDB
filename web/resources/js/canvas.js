@@ -79,9 +79,11 @@ function reDraw() {
 }
 
 function mainSubmit(){
-     var x = document.getElementById("MainForm:spin").value;
-     alert(x);
-    //alert("1123");
+     var y = document.getElementById("MainForm:Yinput").value;
+     alert("y="+y);
+     var x = $(document.getElementById("MainForm:spin").innerHTML).attr("value");
+     alert("x="+x);
+    drawPoint()
 }
 
 function drawPoint(context, x, y , inArea){
@@ -121,6 +123,9 @@ function addPoint(x, y) {
     document.getElementById("HiddenForm:HiddenX").value=x;
     document.getElementById("HiddenForm:HiddenY").value=y;
     document.getElementById("HiddenForm:HiddenR").value=R;
+    alert( document.getElementById("HiddenForm:HiddenX").value);
+    alert( document.getElementById("HiddenForm:HiddenY").value);
+    alert( document.getElementById("HiddenForm:HiddenR").value);
     document.getElementById("HiddenForm:HiddenSubmit").click();
 }
 
