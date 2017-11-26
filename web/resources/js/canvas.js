@@ -79,11 +79,22 @@ function reDraw() {
 }
 
 function mainSubmit(){
-     var y = document.getElementById("MainForm:Yinput").value;
-     alert("y="+y);
-     var x = $(document.getElementById("MainForm:spin").innerHTML).attr("value");
-     alert("x="+x);
-    drawPoint()
+    var y = document.getElementById("MainForm:Yinput").value;
+    var x = $(document.getElementById("MainForm:spin").innerHTML).attr("value");
+    alert(x);
+    var width = canvas.width;
+    var height = canvas.height;
+    var wDiv = canvas.width / 12;
+    var hDiv = canvas.height / 12;
+    if(x <= 0) x = (width/2 + x * wDiv);
+    else x = (x * wDiv) + width/2;
+
+    if(y >= 0) y = (height / 2 - y * hDiv);
+    else y = height/2 + ((-y) * hDiv);
+
+    alert("y="+y);
+    alert("x="+x);
+    drawPoint(c , x ,y , inArea(x,y));
 }
 
 function drawPoint(context, x, y , inArea){
