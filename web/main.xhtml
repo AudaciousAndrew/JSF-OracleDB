@@ -35,8 +35,10 @@
                            min="-5"
                            max="5"
                            size="13"
-                           value="#{point.x}"/>
-
+                           value="#{point.x}">
+                    <p:ajax update="HiddenX2" process="@this"/>
+                </p:spinner>
+                <h:inputHidden id="HiddenX2" value="#{point.x}"/>
 
                 <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
                 <h:inputText id="Yinput"
@@ -86,12 +88,23 @@
                             </h:commandLink>
                         </td>
                     </tr>
-                    <h:inputHidden id="HiddenR2" value="#{point.r}"/>
+                    <h:inputHidden id="HiddenR2"
+                                   value="#{point.r}"
+                                   required="true"
+                                   requiredMessage="Required R" />
                 </table>
 
 
                 <div class="buttons-container">
-                    <p:commandButton value="Submit" update="result_table" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
+                    <p:commandButton value="Submit"
+                                     action="#{point.addNewPoint}"
+                                     oncomplete="refreshTable(); refreshError();"
+                                     onclick="mainSubmit()"
+                                     >
+                    </p:commandButton>
+                    <p:remoteCommand name="refreshSpin" update="spin"/>
+                    <p:remoteCommand name="refreshTable" update="result_table"/>
+                    <p:remoteCommand name="refreshError" update="errMSG"/>
                     <br/>
                     <div class="ccc">
                         <p:commandButton id="indexbtn" value="GoIndex" action="index" />
