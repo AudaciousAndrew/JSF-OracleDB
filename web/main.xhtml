@@ -6,140 +6,140 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Main Page</title>
-        <h:outputStylesheet library="css" name="main.css"/>
-        <h:outputScript library="js" name="validation.js"/>
+<h:head>
+    <title>Main Page</title>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <h:outputScript library="js" name="validation.js"/>
 
-    </h:head>
-    <h:body>
+</h:head>
+<h:body>
 
-        <div class="header">
-            <h:outputLabel value="Melnic Andrew , Semenov Pavel IAD Lab 3 V:1030"/>
-        </div>
+    <div class="header">
+        <h:outputLabel value="Melnic Andrew , Semenov Pavel IAD Lab 3 V:1030"/>
+    </div>
 
-        <div class="flex-container">
+    <div class="flex-container">
 
-            <div class="left-bar">
+        <div class="left-bar">
 
-                <h:form id="MainForm">
+            <h:form id="MainForm">
 
-                    <div id="inptLable">
-                        <h:outputLabel>Input</h:outputLabel><br/>
-                    </div>
-
-                    <h:outputLabel>Enter X(-5..5):</h:outputLabel>
-                    <p:spinner id="spin"
-                               stepFactor="0.1"
-                               required="true"
-                               min="-5"
-                               max="5"
-                               size="13"
-                               value="#{point.x}"/>
-
-
-                    <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
-                    <h:inputText id="Yinput"
-                                 value="#{point.y}"
-                                 validatorMessage="Wrong Y"
-                                 converterMessage="Wrong Y"
-                                 requiredMessage="Required Y"
-                                 >
-                        <f:validateDoubleRange maximum="3" minimum="-5"/>
-                        <f:validateRequired />
-                    </h:inputText>
-                    <br/>
-
-
-                    <h:outputLabel>Enter R:</h:outputLabel>
-                    <br/>
-                    <table class="linktable">
-                        <tr>
-                            <td>
-                                <h:commandLink id="link1"  onclick='setRAndDraw(1)'>
-                                    <f:ajax execute="@form" render="@form"></f:ajax>
-                                    1
-                                </h:commandLink>
-                            </td>
-                            <td>
-                                <h:commandLink id="link2" onclick='setRAndDraw(2)'>
-                                    <f:ajax execute="@form" render="@form"></f:ajax>
-                                    2
-                                </h:commandLink>
-                            </td>
-                            <td>
-                                <h:commandLink id="link3" onclick="setRAndDraw(3)">
-                                    <f:ajax execute="@form" render="@form"></f:ajax>
-                                    3
-                                </h:commandLink>
-                            </td>
-                            <td>
-                                <h:commandLink id="link4" onclick="setRAndDraw(4)">
-                                    <f:ajax execute="@form" render="@form"></f:ajax>
-                                    4
-                                </h:commandLink>
-                            </td>
-                            <td>
-                                <h:commandLink id="link5" onclick="setRAndDraw(5)">
-                                    <f:ajax execute="@form" render="@form"></f:ajax>
-                                    5
-                                </h:commandLink>
-                            </td>
-                        </tr>
-                        <h:inputHidden id="HiddenR2" value="#{point.r}"/>
-                    </table>
-
-
-                    <div class="buttons-container">
-                        <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
-                        <br/>
-                        <div class="ccc">
-                        <p:commandButton id="indexbtn" value="GoIndex" action="index.xhtml" />
-                        </div>
-                        <h:messages id="errMSG" />
-                   </div>
-
-                </h:form>
-
-            </div>
-
-
-            <div class="midle-bar">
-                <div class="canvasff">
-                   <canvas onclick="clicCanvas(event)"></canvas>
+                <div id="inptLable">
+                    <h:outputLabel>Input</h:outputLabel><br/>
                 </div>
-            </div>
+
+                <h:outputLabel>Enter X(-5..5):</h:outputLabel>
+                <p:spinner id="spin"
+                           stepFactor="0.1"
+                           required="true"
+                           min="-5"
+                           max="5"
+                           size="13"
+                           value="#{point.x}"/>
 
 
-            <div class="right-bar">
-                <table>
+                <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
+                <h:inputText id="Yinput"
+                             value="#{point.y}"
+                             validatorMessage="Wrong Y"
+                             converterMessage="Wrong Y"
+                             requiredMessage="Required Y"
+                >
+                    <f:validateDoubleRange maximum="3" minimum="-5"/>
+                    <f:validateRequired />
+                </h:inputText>
+                <br/>
+
+
+                <h:outputLabel>Enter R:</h:outputLabel>
+                <br/>
+                <table class="linktable">
                     <tr>
-                        <th>X</th>
-                        <th>Y</th>
-                        <th>R</th>
-                        <th>Hit</th>
+                        <td>
+                            <h:commandLink id="link1"  onclick='setRAndDraw(1)'>
+                                <f:ajax execute="@form" render="@form"></f:ajax>
+                                1
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink id="link2" onclick='setRAndDraw(2)'>
+                                <f:ajax execute="@form" render="@form"></f:ajax>
+                                2
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink id="link3" onclick="setRAndDraw(3)">
+                                <f:ajax execute="@form" render="@form"></f:ajax>
+                                3
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink id="link4" onclick="setRAndDraw(4)">
+                                <f:ajax execute="@form" render="@form"></f:ajax>
+                                4
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink id="link5" onclick="setRAndDraw(5)">
+                                <f:ajax execute="@form" render="@form"></f:ajax>
+                                5
+                            </h:commandLink>
+                        </td>
                     </tr>
+                    <h:inputHidden id="HiddenR2" value="#{point.r}"/>
                 </table>
+
+
+                <div class="buttons-container">
+                    <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
+                    <br/>
+                    <div class="ccc">
+                        <p:commandButton id="indexbtn" value="GoIndex" action="index" />
+                    </div>
+                    <h:messages id="errMSG" />
+                </div>
+
+            </h:form>
+
+        </div>
+
+
+        <div class="midle-bar">
+            <div class="canvasff">
+                <canvas onclick="clicCanvas(event)"></canvas>
             </div>
         </div>
 
 
-        <div class="footer">
-            Made by mistake.
+        <div class="right-bar">
+            <table>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Hit</th>
+                </tr>
+            </table>
         </div>
-
-        <h:form id="HiddenForm">
-            <h:inputHidden id="HiddenX" value="#{point.x}"/>
-            <h:inputHidden id="HiddenY" value="#{point.y}"/>
-            <h:inputHidden id="HiddenR" value="#{point.r}"/>
-            <p:commandButton style="display: none"
-                             id="HiddenSubmit"
-                             value="Submit"
-                             action="#{point.addNewPoint}">
-            </p:commandButton>
-        </h:form>
+    </div>
 
 
-        <h:outputScript library="js" name="canvas.js"/>
-    </h:body>
+    <div class="footer">
+        Made by mistake.
+    </div>
+
+    <h:form id="HiddenForm">
+        <h:inputHidden id="HiddenX" value="#{point.x}"/>
+        <h:inputHidden id="HiddenY" value="#{point.y}"/>
+        <h:inputHidden id="HiddenR" value="#{point.r}"/>
+        <p:commandButton style="display: none"
+                         id="HiddenSubmit"
+                         value="Submit"
+                         action="#{point.addNewPoint}">
+        </p:commandButton>
+    </h:form>
+
+
+    <h:outputScript library="js" name="canvas.js"/>
+</h:body>
 </html>

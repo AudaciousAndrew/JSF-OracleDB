@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
 
-    <h:head>
+<h:head>
         <title>
             IndexPage
         </title>
@@ -40,8 +40,7 @@
                     <div class="link">
                         <!--<h:commandLink action="main">Go Main</h:commandLink>-->
                         <!--FIX PAGE NAVIGATION-->
-                        <h:commandLink action="main">Go to the Main Page</h:commandLink>
-                    </div>
+                        <h:link value = "Go to the Main Page" outcome = "main"/>                    </div>
                 </div>
                 <div class="box" id="box3">
                     <h:graphicImage library="imgs" name="tenor.gif"/>
