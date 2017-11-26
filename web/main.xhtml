@@ -91,7 +91,7 @@
 
 
                 <div class="buttons-container">
-                    <p:commandButton value="Submit" update="errMSG" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
+                    <p:commandButton value="Submit" update="result_table" action="#{point.addNewPoint}" onclick="mainSubmit()"/>
                     <br/>
                     <div class="ccc">
                         <p:commandButton id="indexbtn" value="GoIndex" action="index" />
@@ -112,14 +112,36 @@
 
 
         <div class="right-bar">
-            <table>
-                <tr>
-                    <th>X</th>
-                    <th>Y</th>
-                    <th>R</th>
-                    <th>Hit</th>
-                </tr>
-            </table>
+            <h:dataTable  id="result_table"  var="record"  value="#{point.points}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="X">
+                    </h:outputText>
+                </f:facet>
+                <h:outputText value="#{record.x}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Y">
+                    </h:outputText>
+                </f:facet>
+                <h:outputText value="#{record.y}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="R">
+                    </h:outputText>
+                </f:facet>
+                <h:outputText value="#{record.r}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Hit">
+                    </h:outputText>
+                </f:facet>
+                <h:outputText value="#{record.inArea}"/>
+            </h:column>
+        </h:dataTable>
         </div>
     </div>
 
@@ -135,6 +157,7 @@
         <p:commandButton style="display: none"
                          id="HiddenSubmit"
                          value="Submit"
+                         update="result_table"
                          action="#{point.addNewPoint}">
         </p:commandButton>
     </h:form>

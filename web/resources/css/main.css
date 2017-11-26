@@ -49,6 +49,7 @@ html , body{
 .right-bar{
     flex: 2;
     color: black;
+    overflow-x: auto;
 }
 
 .right-bar table{
