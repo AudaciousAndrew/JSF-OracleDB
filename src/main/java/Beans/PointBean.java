@@ -1,6 +1,7 @@
 package Beans;
 
 import Model.*;
+import com.sun.istack.internal.NotNull;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 @SessionScoped
 
 public class PointBean {
+
    private double x;
    private double y;
    private double r;

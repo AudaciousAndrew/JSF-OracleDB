@@ -80,7 +80,9 @@ function reDraw() {
 function mainSubmit(){
     var y = document.getElementById("MainForm:Yinput").value;
     var x = document.getElementById("MainForm:HiddenX2").value;
-    validation(x,y);
+    if(!validation(x,y)){
+        return;
+    }
     var width = canvas.width;
     var height = canvas.height;
     var wDiv = canvas.width / 12;
@@ -124,7 +126,6 @@ function addPoint(x, y) {
     else x = (x - width/2) / wDiv;
     if(y <= height/2) y = (height/2 - y)/ hDiv;
     else y = -(y - height/2) / hDiv;
-    alert("x="+x+" y="+y+" r="+R);
     document.getElementById("HiddenForm:HiddenX").value=x;
     document.getElementById("HiddenForm:HiddenY").value=y;
     document.getElementById("HiddenForm:HiddenR").value=R;
@@ -163,7 +164,6 @@ function drawFromTable(radius){
     var wDiv = canvas.width / 12;
     var hDiv = canvas.height / 12;
     var currRad = radius;
-    alert(currRad);
     for (i = 1; i<=rowLength; i++){
         var oCells = oTable.rows.item(i).cells;
         x = oCells.item(0).innerHTML;

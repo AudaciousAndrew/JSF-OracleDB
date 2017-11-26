@@ -35,6 +35,7 @@
                            min="-5"
                            max="5"
                            size="13"
+                           onkeypress="return false"
                            value="#{point.x}">
                     <p:ajax update="HiddenX2" process="@this"/>
                 </p:spinner>
@@ -43,12 +44,13 @@
                 <h:outputLabel>Enter Y(-5..3):</h:outputLabel><br/>
                 <h:inputText id="Yinput"
                              value="#{point.y}"
-                             validatorMessage="Wrong Y"
                              converterMessage="Wrong Y"
-                             requiredMessage="Required Y"
+                             requiredMessage="Wrong Y"
+                             validatorMessage="Wrong Y"
                 >
-                    <f:validateDoubleRange maximum="3" minimum="-5"/>
+                    <f:validateDoubleRange minimum="-5" maximum="3"/>
                     <f:validateRequired />
+                    <f:convertNumber />
                 </h:inputText>
                 <br/>
 
@@ -91,14 +93,19 @@
                     <h:inputHidden id="HiddenR2"
                                    value="#{point.r}"
                                    required="true"
-                                   requiredMessage="Required R" />
+                                   requiredMessage="Required R"
+                                   validatorMessage="Wrong R"
+                    >
+                        <f:validateLongRange maximum="5" minimum="1"/>
+                        <f:validateRequired />
+                    </h:inputHidden>
                 </table>
 
 
                 <div class="buttons-container">
                     <p:commandButton value="Submit"
                                      action="#{point.addNewPoint}"
-                                     oncomplete="refreshTable(); refreshError();"
+                                     oncomplete="refreshTable(); refreshError(); refreshSpin();"
                                      onclick="mainSubmit()"
                                      >
                     </p:commandButton>

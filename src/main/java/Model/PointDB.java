@@ -28,7 +28,7 @@ public class PointDB  {
         dataSource.setDatabaseName("postgres");
         dataSource.setCurrentSchema("public");
         dataSource.setUser("postgres");
-        dataSource.setPassword("123");
+        dataSource.setPassword("489052369");
         try {
             String sql = "CREATE TABLE IF NOT EXISTS point (\n" +
                     "  id     SERIAL PRIMARY KEY,\n" +
