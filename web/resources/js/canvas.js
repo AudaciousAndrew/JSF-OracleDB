@@ -129,9 +129,6 @@ function addPoint(x, y) {
     document.getElementById("HiddenForm:HiddenX").value=x;
     document.getElementById("HiddenForm:HiddenY").value=y;
     document.getElementById("HiddenForm:HiddenR").value=R;
-    alert( document.getElementById("HiddenForm:HiddenX").value);
-    alert( document.getElementById("HiddenForm:HiddenY").value);
-    alert( document.getElementById("HiddenForm:HiddenR").value);
     document.getElementById("HiddenForm:HiddenSubmit").click();
 }
 
