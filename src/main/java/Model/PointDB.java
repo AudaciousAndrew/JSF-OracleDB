@@ -5,10 +5,7 @@ import com.sun.xml.internal.ws.policy.spi.PrefixMapper;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.rowset.JdbcRowSet;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,22 +20,35 @@ public class PointDB  {
 
     private void connectDB()
     {
-        PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        dataSource.setServerName("localhost");
-        dataSource.setDatabaseName("postgres");
-        dataSource.setCurrentSchema("public");
-        dataSource.setUser("postgres");
-        dataSource.setPassword("489052369");
+//        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+//        dataSource.setServerName("localhost");
+//        dataSource.setDatabaseName("postgres");
+//        dataSource.setCurrentSchema("public");
+//        dataSource.setUser("postgres");
+//        dataSource.setPassword("123");
+
         try {
+            dbConnection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.10.10:1521:orbis", "s225092", "jccRQac2");
             String sql = "CREATE TABLE IF NOT EXISTS point (\n" +
-                    "  id     SERIAL PRIMARY KEY,\n" +
-                    "  x      DOUBLE PRECISION,\n" +
-                    "  y      DOUBLE PRECISION,\n" +
+                    "  id     NUMBER(10) PRIMARY KEY,\n" +
+                    "  x      FLOAT(49) NOT NULL,\n"     +
+                    "  y      FLOAT(49) NOT NULL,\n" +
                     "  r      DOUBLE PRECISION,\n" +
-                    "  inArea BOOLEAN\n" +
+                    "  inArea NUMBER(1) NOT NULL CHECK (inarea IN (0,1))\n" +
                     ");\n";
-            dbConnection = dataSource.getConnection();
-            final PreparedStatement statement = dbConnection.prepareStatement(sql);
+
+            String sql2 = "CREATE SEQUENCE records_id_seq START WITH 1;\n" +
+            "CREATE OR REPLACE TRIGGER point_id_trigger\n" +
+            "BEFORE INSERT ON records\n" +
+            "FOR EACH ROW\n" +
+            "        BEGIN\n" +
+            "SELECT records_id_seq.NEXTVAL\n" +
+            "INTO   :NEW.id\n" +
+            "FROM   dual;\n" +
+            "END;\n";
+            PreparedStatement statement = dbConnection.prepareStatement(sql);
+            statement.execute();
+            statement = dbConnection.prepareStatement(sql2);
             statement.execute();
         }
         catch (SQLException e) {
@@ -50,10 +60,10 @@ public class PointDB  {
         try{
             String sql = "insert into point (x, y, r, inArea) values (?, ?, ?, ?);";
             PreparedStatement statement = dbConnection.prepareStatement(sql);
-            statement.setDouble(1, p.getX());
-            statement.setDouble(2, p.getY());
-            statement.setDouble(3, p.getR());
-            statement.setBoolean(4, p.isInArea());
+            statement.setFloat(1, p.getX());
+            statement.setFloat(2, p.getY());
+            statement.setFloat(3, p.getR());
+            statement.setByte(4, p.isInArea());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,9 +80,9 @@ public class PointDB  {
         ArrayList<PointEntity> list = new ArrayList<PointEntity>();
         while(jdbcRowSet.next()) {
             int Id = Integer.parseInt(jdbcRowSet.getString("id"));
-            double X = Double.parseDouble(jdbcRowSet.getString("x"));
-            double Y = Double.parseDouble(jdbcRowSet.getString("y"));
-            double R = Double.parseDouble(jdbcRowSet.getString("r"));
+            float X = Float.parseFloat(jdbcRowSet.getString("x"));
+            float Y = Float.parseFloat(jdbcRowSet.getString("y"));
+            float R = Float.parseFloat(jdbcRowSet.getString("r"));
             list.add(new PointEntity(Id, X, Y, R));
         }
         return list;

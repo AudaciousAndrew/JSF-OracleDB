@@ -3,21 +3,21 @@ package Model;
 public class PointEntity {
 
     private int id;
-    private double x;
-    private double y;
-    private double r;
-    private boolean inArea;
+    private float x;
+    private float y;
+    private float r;
+    private byte inArea;
 
     public PointEntity(){}
 
-    public PointEntity(double x, double y, double r){
+    public PointEntity(float x, float y, float r){
         this.x = x;
         this.y = y;
         this.r = r;
         inArea = checkArea();
     }
 
-    public PointEntity(int id, double x, double y, double r){
+    public PointEntity(int id, float x, float y, float r){
         this.id = id;
         this.x = x;
         this.y = y;
@@ -33,67 +33,43 @@ public class PointEntity {
         this.id = id;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 
-    public double getR() {
+    public float getR() {
         return r;
     }
 
-    public void setR(double r) {
+    public void setR(float r) {
         this.r = r;
     }
 
-    public boolean isInArea() {
+    public byte isInArea() {
         return inArea;
     }
 
-    public boolean checkArea(){
+    public byte getInArea() {
+        return inArea;
+    }
+
+    public byte checkArea(){
         if((x <= 0 && x >=-r) &&
-                ((y >= 0 && y <= r/2) || (y <= 0 && y >= -r && (Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2))))) return true;
-        if(x >= 0 && x <= r/2 && y <= 0 && y >= -r/2 && y>=(x-r/2)) return true;
-        return false;
+                ((y >= 0 && y <= r/2) || (y <= 0 && y >= -r && (Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2))))) return 1;
+        if(x >= 0 && x <= r/2 && y <= 0 && y >= -r/2 && y>=(x-r/2)) return 1;
+        return 0;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PointEntity that = (PointEntity) o;
-
-        if (id != that.id) return false;
-        if (Double.compare(that.x, x) != 0) return false;
-        if (Double.compare(that.y, y) != 0) return false;
-        if (Double.compare(that.r, r) != 0) return false;
-        return inArea == that.inArea;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        temp = Double.doubleToLongBits(x);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(r);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (inArea ? 1 : 0);
-        return result;
-    }
 }

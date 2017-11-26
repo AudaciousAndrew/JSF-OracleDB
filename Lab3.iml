@@ -43,5 +43,6 @@
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.faces:jsf-api:2.1" level="project" />
     <orderEntry type="library" name="postgresql-42.1.4" level="project" />
+    <orderEntry type="library" name="ojdbc8" level="project" />
   </component>
 </module>

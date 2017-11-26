@@ -13,34 +13,34 @@ import java.util.ArrayList;
 
 public class PointBean {
 
-   private double x;
-   private double y;
-   private double r;
+   private float x;
+   private float y;
+   private float r;
    private ArrayList<PointEntity> points;
    private final PointDB db = new PointDB();
 
 
-   public double getX() {
+   public float getX() {
         return x;
     }
 
-   public void setX(double x) {
+   public void setX(float x) {
         this.x = x;
     }
 
-   public double getY() {
+   public float getY() {
         return y;
     }
 
-   public void setY(double y) {
+   public void setY(float y) {
         this.y = y;
     }
 
-   public double getR() {
+   public float getR() {
         return r;
     }
 
-   public void setR(double r) {
+   public void setR(float r) {
         this.r = r;
     }
 
