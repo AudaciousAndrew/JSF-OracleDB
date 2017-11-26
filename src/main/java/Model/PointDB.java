@@ -28,7 +28,7 @@ public class PointDB  {
         dataSource.setDatabaseName("postgres");
         dataSource.setCurrentSchema("public");
         dataSource.setUser("postgres");
-        dataSource.setPassword("489052369");
+        dataSource.setPassword("123");
         try {
             String sql = "CREATE TABLE IF NOT EXISTS point (\n" +
                     "  id     SERIAL PRIMARY KEY,\n" +
@@ -61,7 +61,7 @@ public class PointDB  {
     }
 
     public ArrayList<PointEntity> getAll() throws SQLException {
-        String sql = "select * from point;";
+        String sql = "select * from point order by id ASC;";
         PreparedStatement statement = dbConnection.prepareStatement(sql);
         statement.execute();
 

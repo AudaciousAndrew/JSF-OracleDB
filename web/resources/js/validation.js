@@ -4,6 +4,7 @@ function setRAndDraw(r){
     drawArea(r);
     R = r;
     document.getElementById("MainForm:HiddenR2").value = r;
+    drawFromTable(r);
 }
 
 function validation(x ,y){

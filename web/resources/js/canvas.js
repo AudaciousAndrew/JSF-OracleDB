@@ -154,26 +154,30 @@ function inArea(x,y){
     }
 }
 
-// function drawFromTable(){
-//     var oTable = document.getElementById("table11");
-//     var rowLength = oTable.rows.length;
-//     var x, y, r, ent;
-//     var width = canvas.width;
-//     var height = canvas.height;
-//     var wDiv = canvas.width / 10;
-//     var hDiv = canvas.height / 10;
-//     var currRad = parseFloat(document.forms["input"]["R"].value , 10);
-//     for (i = 1; i<=rowLength; i++){
-//         var oCells = oTable.rows.item(i).cells;
-//         x = oCells.item(1).innerHTML;
-//         y = oCells.item(2).innerHTML;
-//         r = oCells.item(3).innerHTML;
-//         ent = oCells.item(4).innerHTML;
-//         if(x <= 0) x = (width/2 + x * wDiv);
-//         else x = (x * wDiv) + width/2;
-//
-//         if(y >= 0) y = (height / 2 - y * hDiv);
-//         else y = height/2 + ((-y) * hDiv);
-//         if(currRad == r)drawPoint(c, x, y, ent);
-//     }
-// }
+function drawFromTable(radius){
+    var oTable = document.getElementById("result_table");
+    var rowLength = oTable.rows.length;
+    var x, y, r, ent;
+    var width = canvas.width;
+    var height = canvas.height;
+    var wDiv = canvas.width / 12;
+    var hDiv = canvas.height / 12;
+    var currRad = radius;
+    alert(currRad);
+    for (i = 1; i<=rowLength; i++){
+        var oCells = oTable.rows.item(i).cells;
+        x = oCells.item(0).innerHTML;
+        y = oCells.item(1).innerHTML;
+        r = oCells.item(2).innerHTML;
+        ent = oCells.item(3).innerHTML;
+        if(x <= 0) x = (width/2 + x * wDiv);
+        else x = (x * wDiv) + width/2;
+
+        if(y >= 0) y = (height / 2 - y * hDiv);
+        else y = height/2 + ((-y) * hDiv);
+        if(currRad == r){
+
+            drawPoint(c, x, y, ent);
+        }
+    }
+}
