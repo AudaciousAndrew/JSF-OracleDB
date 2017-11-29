@@ -96,7 +96,7 @@ function mainSubmit(){
 
 function drawPoint(context, x, y , inArea){
     context.beginPath();
-    if(inArea =="true"){
+    if(inArea == 1){
         context.fillStyle = "Green";
     } else {
         context.fillStyle = "Red";
@@ -146,9 +146,9 @@ function inArea(x,y){
         ( x<=0 && y<=0 && ((x*x + y*y) <= (R*R))  ) ||
         ( x >= 0 && x <= R/2 && y <= 0 && y >= -R/2 && y>=(x - R/2) )
     ){
-        return 'true';
+        return 1;
     }else{
-        return 'false';
+        return 0;
     }
 }
 

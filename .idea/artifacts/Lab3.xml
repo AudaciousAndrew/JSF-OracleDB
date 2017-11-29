@@ -9,6 +9,10 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Mojarra-2.2.1" />
+          <element id="library" level="project" name="ojdbc8" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.0" />
+          <element id="library" level="project" name="postgresql-42.1.4" />
+          <element id="library" level="project" name="PrimeFaces-6.1" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Lab3/web/Web" />
